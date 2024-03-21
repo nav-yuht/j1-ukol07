@@ -9,10 +9,14 @@ Nemusíte dodržet přesné pořadí kroků uvedených níže – např. se mů�
    package `cz.czechitas.ukol07`.
 1. Třída `Kniha` bude JavaBean a bude reprezentovat jednu knížku. Podívejte se na strukturu JSON souboru `src/main/resources/cz/czechitas/ukol07/knihy.json` a
    strukturu třídy (properties) navhněte podle struktury JSON souboru.
-1. Ve třídě `KnihaSluzba` bude field typu `List<Kniha>`. Obsah tohoto souboru naplňte v konstruktoru třídy. Pro načtení použijte `ObjectMapper`. Pro načtení
-   použijte `InputStream`, který vytvoříte voláním `KnihaSluzba.class.getResourceAsStream("knihy.json")`. Tímto způsobem načtetesoubor knihy.json, který je uložen
-   v `src/main/java` ve stejném package, jako třída `KnihaSluzba`. Nezapomeňte, že `InputStream` se musí po dokončení zavřít – použijte
-   konstrukci `try-with-resources`.
+1. Ve třídě `KnihaSluzba` bude field typu `List<Kniha>`. Obsah tohoto souboru naplňte v konstruktoru třídy. Pro načtení použijte `ObjectMapper`.
+    1. Pro načtení použijte `InputStream`, který vytvoříte voláním `KnihaSluzba.class.getResourceAsStream("knihy.json")`. Tímto způsobem načtetesoubor
+       knihy.json, který je uložen
+       v `src/main/java` ve stejném package, jako třída `KnihaSluzba`. Nezapomeňte, že `InputStream` se musí po dokončení zavřít – použijte
+       konstrukci `try-with-resources`.
+    1. Pro samotné načtení `List`u použijte následující konstrukic: `objectMapper.readValue(inputStream, new TypeReference<List<Kniha>>(){})`.
+       Kód `objectMapper.readValue(inputStream, List<Kniha>.class)` z historických důvodů nejde použít. Pokud potřebujete načíst kolekci nebo jakýkoli jiný
+       generický typ, je potřeba použít konstrukci s třídou `TypeReference`.
 1. Ve třídě `KnihaSluzba` vytvořte vhodně pojmenovanou metodu, která vrátí seznam (`List`) všech knih.
 1. Ve třídě `KnihaSluzba` vytvořte vhodně pojmenovanou metodu, která vrátí seznam (`List`) všech knih od zadaného autora (jméno autora bude parametr metody).
    Vrácený seznam může být prázdný.
