@@ -10,7 +10,7 @@ Nemusíte dodržet přesné pořadí kroků uvedených níže – např. se mů�
 1. Třída `Kniha` bude JavaBean a bude reprezentovat jednu knížku. Podívejte se na strukturu JSON souboru `src/main/resources/cz/czechitas/ukol07/knihy.json` a
    strukturu třídy (properties) navhněte podle struktury JSON souboru.
 1. Ve třídě `KnihaSluzba` bude field typu `List<Kniha>`. Obsah tohoto souboru naplňte v konstruktoru třídy. Pro načtení použijte `ObjectMapper`. Pro načtení
-   použijte `InputStream`, který vytvoříte voláním `KnihaSluzba.class.getResource("knihy.json")`. Tímto způsobem načtetesoubor knihy.json, který je uložen
+   použijte `InputStream`, který vytvoříte voláním `KnihaSluzba.class.getResourceAsStream("knihy.json")`. Tímto způsobem načtetesoubor knihy.json, který je uložen
    v `src/main/java` ve stejném package, jako třída `KnihaSluzba`. Nezapomeňte, že `InputStream` se musí po dokončení zavřít – použijte
    konstrukci `try-with-resources`.
 1. Ve třídě `KnihaSluzba` vytvořte vhodně pojmenovanou metodu, která vrátí seznam (`List`) všech knih.
